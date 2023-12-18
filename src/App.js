@@ -6,9 +6,12 @@ function App() {
   const initialUrl = process.env.REACT_APP_INITIAL_POKEMON_ENDPOINT;
 
   const [loading, setLoading] = useState(true)
+  const [pokemonData, setPokemonData] = useState([])
 
-  const loadEachPokemon = async (data) =>
-    Promise.all(data.map((pokemon) => getEach(pokemon.url)))
+  const loadEachPokemon = async (data) => {
+    const res = await Promise.all(data.map((pokemon) => getEach(pokemon.url)))
+    return setPokemonData(res)
+  }
 
   useEffect(() => {
     const fetchAllPokemon = async () => {
@@ -19,9 +22,14 @@ function App() {
     fetchAllPokemon()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   return (
     <div className="App">
-      {loading ? <h1>ローディング中です。</h1> : <h1>データを取得しました。</h1>}
+      {loading ? (
+        <h1>ローディング中です。</h1>
+      ) : (
+        <div className='pokemonCardContainer'>{pokemonData.map((pokemon, index) => pokemon.url)}</div>
+      )}
     </div>
   );
 }
