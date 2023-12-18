@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { getAll } from './api/pokemon'
+import { getAll, getEach } from './api/pokemon'
 
 function App() {
   const initialUrl = process.env.REACT_APP_INITIAL_POKEMON_ENDPOINT;
 
   const [loading, setLoading] = useState(true)
 
+  const loadEachPokemon = async (data) =>
+    Promise.all(data.map((pokemon) => getEach(pokemon.url)))
+
   useEffect(() => {
     const fetchAllPokemon = async () => {
-      await getAll(initialUrl); setLoading(false)
+      const res = await getAll(initialUrl);
+      await loadEachPokemon(res.results);
+      setLoading(false)
     }
     fetchAllPokemon()
     // eslint-disable-next-line react-hooks/exhaustive-deps
