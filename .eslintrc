@@ -1,0 +1,16 @@
+{
+  "env": {
+    "browser": true, // window, alert, documentを認識する
+    "node": true, // process
+    "es6": true // JavaScriptを許可する
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module" // import/exportを許可する
+  },
+  "rules": {
+    "no-unused-vars": ["off"],
+    "linebreak-style": ["off"]
+  },
+  "extends": ["airbnb-base"]
+}

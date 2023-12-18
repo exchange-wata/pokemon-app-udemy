@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { getAll, getEach } from './api/pokemon'
+import { getAll, getEach } from './api/pokemon';
 
 function App() {
   const initialUrl = process.env.REACT_APP_INITIAL_POKEMON_ENDPOINT;
