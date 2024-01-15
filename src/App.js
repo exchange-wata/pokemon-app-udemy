@@ -9,7 +9,8 @@ function App() {
   const [pokemonData, setPokemonData] = useState([])
 
   const loadEachPokemon = async (data) => {
-    const res = await Promise.all(data.map((pokemon) => getEach(pokemon.url)))
+    const res = data.map((pokemon) => getEach(pokemon.url))
+    console.log(res)
     return setPokemonData(res)
   }
 

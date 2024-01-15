@@ -1,25 +1,11 @@
-export const getAll = (url) => {
-  return new Promise((resolve, reject) => {
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) throw Error('レスポンスが正しくありませんでした。')
-
-        return res.json()
-      })
-      .then((data) => resolve(data))
-      .catch((e) => reject(e))
-  })
+export const getAll = async (url) => {
+  const res = await fetch(url)
+  if (!res.ok) throw Error('レスポンスが正しくありませんでした。')
+  return res.json()
 }
 
-export const getEach = (url) => {
-  return new Promise((resolve, reject) => {
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) throw Error('レスポンスが正しくありませんでした。')
-
-        return res.json()
-      })
-      .then((data) => resolve(data))
-      .catch((e) => reject(e))
-  })
+export const getEach = async (url) => {
+  const res = await fetch(url)
+  if (!res.ok) throw Error('レスポンスが正しくありませんでした。')
+  return res.json()
 }

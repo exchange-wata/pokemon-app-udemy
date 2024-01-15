@@ -10,7 +10,7 @@
   },
   "rules": {
     "no-unused-vars": ["off"],
-    "linebreak-style": ["off"]
-  },
-  "extends": ["airbnb-base"]
+    "linebreak-style": ["off"],
+    "react-hooks/exhaustive-deps": "warn"
+  }
 }
